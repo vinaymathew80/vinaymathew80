@@ -1,0 +1,19 @@
+name: echo-config
+run-name: Echo test triggered by ${{ github.actor }}.
+on:
+    workflow_dispatch:
+        inputs:
+            testConfig:
+                description: 'Test Config'
+                type: string
+                required: true
+
+jobs:
+  execute_echoTest:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Echo supplied config
+        run: |
+            echo ${{inputs.testConfig}}
+        shell: bash
+        
